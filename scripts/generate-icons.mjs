@@ -5,11 +5,12 @@ const root=new URL('../public/',import.meta.url);
 const svg=await readFile(new URL('favicon.svg',root),'utf8');
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
- const page=await browser.newPage({deviceScaleFactor:1});const icons=[];
+ const icons=[];
  for(const size of [16,32,180]){
-  await page.setViewportSize({width:size,height:size});
-  await page.setContent(`<style>html,body{margin:0;background:#232a3d}svg{display:block;width:100vw;height:100vh}</style>${svg}`);
-  const png=await page.screenshot({type:'png'});
+  const page=await browser.newPage({viewport:{width:size,height:size},deviceScaleFactor:1});
+  await page.setContent(`<style>html,body{margin:0;background:#232a3d}svg{display:block;width:${size}px;height:${size}px}</style>${svg}`);
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  const png=await page.screenshot({type:'png'});await page.close();
   if(size===180)await writeFile(new URL('apple-touch-icon.png',root),png);else icons.push({size,png});
  }
  const header=Buffer.alloc(6+icons.length*16);header.writeUInt16LE(1,2);header.writeUInt16LE(icons.length,4);let offset=header.length;
