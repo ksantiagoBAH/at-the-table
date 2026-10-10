@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import ts from 'typescript';
+const source=await readFile(new URL('../src/content.ts',import.meta.url),'utf8');
+const js=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;
+const {units,catechismReferences,massReference}=await import(`data:text/javascript;base64,${Buffer.from(js).toString('base64')}`);
+const index=JSON.parse(await readFile(new URL('ccc-page-index.json',import.meta.url),'utf8'));
+let citations=0;
+for(const lesson of units.flatMap(unit=>unit.lessons)){
+ const links=catechismReferences(lesson);
+ assert.equal(links.map(link=>link.label.slice(4)).join('; '),lesson.ccc,lesson.id);
+ for(const link of links){
+  const page=index.pages.find(page=>page.url===link.url);assert(page,`${lesson.id}: unverified page`);
+  for(const citation of link.label.slice(4).split('; ')){
+   const [start,end]=citation.split(/[–-]/).map(Number);
+   for(let number=start;number<=(end||start);number++){assert(page.paragraphs.includes(number),`${lesson.id}: linked page lacks CCC ${number}`);citations++}
+  }
+ }
+ assert.match(massReference(lesson).label,/GIRM \d/);
+}
+console.log(`PASS all 28 lessons: ${citations} cited paragraph occurrences reach pages containing those paragraphs (Vatican pages checked ${index.checked}); every lesson has a Mass-instruction source`);
