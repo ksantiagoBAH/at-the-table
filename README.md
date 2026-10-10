@@ -96,3 +96,7 @@ Repository: https://github.com/ksantiagoBAH/at-the-table
 Live website: https://ksantiagobah.github.io/at-the-table/
 
 Pushes to `main` and manual runs of `.github/workflows/deploy.yml` install dependencies, verify reference coverage, lint, build, and deploy `dist/` to GitHub Pages. The relative Vite base preserves assets and narration under the repository path. The site is free and public, with no backend or runtime secrets.
+
+## Link previews
+
+The initial HTML includes Open Graph and large-image card metadata with an absolute public PNG URL, so preview fetchers can read it without running React. `public/share-card.png` is a 1200 × 630 branded graphic using the existing church illustration. Regenerate locally with `npm run generate:share-card` (Chrome required), then build and publish. Messaging applications decide whether and when to display a preview.

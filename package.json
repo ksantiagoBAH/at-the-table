@@ -14,7 +14,8 @@
     "test:audio": "node scripts/verify-audio.mjs",
     "generate:narration": "node scripts/generate-narration.mjs",
     "test:theme": "node scripts/verify-theme.mjs",
-    "test:references": "node scripts/verify-references.mjs"
+    "test:references": "node scripts/verify-references.mjs",
+    "generate:share-card": "node scripts/generate-share-card.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

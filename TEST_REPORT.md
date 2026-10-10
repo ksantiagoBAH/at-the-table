@@ -85,3 +85,7 @@ Restored the exact visible questions in all 28 recordings: “What happens?”, 
 ## Testament labels for the readings
 
 Added the Testament to the visible What happens explanations and regenerated the corresponding audio: First Reading is usually Old Testament, normally Acts in the New Testament during Easter; Second Reading on Sundays and solemnities is a New Testament letter or Revelation. First Reading notes clarify the weekday and special-celebration variations. Checked against USCCB’s Liturgy of the Word and The Old Testament in the Liturgical Life of the Church. Build, lint, reference checks, narration-script alignment, all 245 audio decodes, and playback regression passed.
+
+## Shared-link preview graphic
+
+Added a 1200 × 630 PNG using the existing church illustration and At the Table branding, plus static Open Graph title, description, canonical URL, image dimensions, image type, and alt text. Added large-image card metadata. Visually inspected the graphic and verified its PNG dimensions and inclusion in the built output. Build and lint passed. Actual Messages rendering is controlled by the receiving application and was not tested by sending a message.
