@@ -93,3 +93,7 @@ Added a 1200 × 630 PNG using the existing church illustration and At the Table 
 ## Browser tab icon
 
 Added a simple church favicon in the parchment, midnight, and gold palette. Includes a scalable SVG, a 16/32px ICO fallback, and a 180px Apple touch icon. Visually reviewed the rendered icon and verified the production HTML uses the correct relative asset paths. Build and lint passed.
+
+## Companion-site footer link
+
+Added a single global footer link to the companion site. Production builds passed for both apps, and adult lint passed. Both links were checked at 375px and 1280px for the correct URL, visibility, a minimum 44px tap target, no horizontal overflow, and automated footer WCAG A/AA checks. Adult footer checks covered both light and dark themes.
