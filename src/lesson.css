@@ -69,4 +69,4 @@ body.themed-app footer .footer-companion-link{display:flex;align-items:center;ga
 body.themed-app footer .footer-companion-link span{color:var(--read-gold);text-decoration:underline;text-underline-offset:4px}
 body.themed-app footer .footer-companion-link .line-icon{width:16px;height:16px}
 
-body.themed-app footer .creator-stamp{order:5;flex-basis:100%;width:100%;margin:0;padding-top:18px;border-top:1px solid var(--read-line);font:600 14px/1.6 var(--read-serif);color:var(--read-gold)}
+body.themed-app footer .creator-credit{display:block;font:12px/1.6 var(--read-sans);color:var(--read-muted);margin-top:7px}
