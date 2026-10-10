@@ -81,3 +81,7 @@ Moved theme tokens to the document root and applied the saved theme to both html
 ## Voice-over heading alignment
 
 Restored the exact visible questions in all 28 recordings: “What happens?”, “Why does it matter?”, and “What do I do?”. Each question is synthesized with the opening explanatory sentence, rather than as a separate short clip. Regenerated the first three sections of every lesson and reused the existing prayer sections. This supersedes the earlier declarative-transition approach. Production build, lint, typecheck, all 28 script comparisons, decoding of all 245 MP3s, and playback regression passed. These checks verify text alignment and playback; they do not establish subjective voice quality.
+
+## Testament labels for the readings
+
+Added the Testament to the visible What happens explanations and regenerated the corresponding audio: First Reading is usually Old Testament, normally Acts in the New Testament during Easter; Second Reading on Sundays and solemnities is a New Testament letter or Revelation. First Reading notes clarify the weekday and special-celebration variations. Checked against USCCB’s Liturgy of the Word and The Old Testament in the Liturgical Life of the Church. Build, lint, reference checks, narration-script alignment, all 245 audio decodes, and playback regression passed.
