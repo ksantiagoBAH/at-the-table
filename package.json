@@ -10,6 +10,7 @@
     "test": "node scripts/verify.mjs",
     "lint": "eslint src vite.config.ts",
     "typecheck": "tsc --noEmit",
+    "test:language": "node scripts/verify-language.mjs",
     "test:reading": "node scripts/verify-reading.mjs",
     "test:audio": "node scripts/verify-audio.mjs",
     "generate:narration": "node scripts/generate-narration.mjs",

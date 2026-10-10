@@ -80,21 +80,33 @@ const catechismSections = [
  [2626,2628,'part_four/section_one/chapter_one/article_3/i_blessing_and_adoration.html'],
  [1328,1332,'part_two/section_two/chapter_one/article_3/ii_what_is_this_sacrament_called.html'],
 ] as const;
-export function catechismReferences(lesson:Lesson):{label:string;url:string}[] {
+const spanishSections:Record<string,string>={
+ 'part_three/section_two/chapter_one/article_2/iii_the_christian_name.html':'p3s2c1a2_sp.html',
+ 'part_two/section_two/chapter_two/article_4/iv_interior_penance.html':'p2s2c2a4_sp.html',
+ 'part_four/section_one/chapter_one/article_3/v_prayer_of_praise.html':'p4s1c1a3_sp.html',
+ 'part_four/section_one/chapter_one/article_3/i_blessing_and_adoration.html':'p4s1c1a3_sp.html',
+ 'part_two/section_one/chapter_two/article_1/ii_how_is_the_liturgy_celebrated.html':'p2s1c2a1_sp.html',
+ 'part_one/section_two.index.html':'p1s2_sp.html',
+ 'part_four/section_two.index.html':'p4s2_sp.html',
+ 'part_one/section_two/chapter_two/article_4/paragraph_2_jesus_died_crucified.html':'p122a4p2_sp.html',
+ 'part_two/section_two/chapter_one/article_3/ii_what_is_this_sacrament_called.html':'p2s2c1a3_sp.html',
+ };
+export function catechismReferences(lesson:Lesson,locale:'en'|'es'='en'):{label:string;url:string}[] {
  const links = new Map<string,string[]>();
  for (const citation of lesson.ccc.split(';').map(text=>text.trim())) {
   const numbers=citation.split(/[–-]/).map(Number);
   const section=catechismSections.find(([start,end])=>numbers.every(n=>n>=start&&n<=end));
   if(!section)throw new Error(`Unmapped Catechism reference: ${citation}`);
   const target=section[2];
-  const url=target.startsWith('https:')?target:`https://www.vatican.va/content/catechism/en/${target}`;
+ const spanishTarget=target.startsWith('https:')?'p2s2c1a3_sp.html':spanishSections[target];
+ const url=locale==='es'&&spanishTarget?`https://www.vatican.va/archive/catechism_sp/${spanishTarget}`:target.startsWith('https:')?target:`https://www.vatican.va/content/catechism/en/${target}`;
   links.set(url,[...(links.get(url)||[]),citation]);
  }
- return [...links].map(([url,citations])=>({url,label:`CCC ${citations.join('; ')}`}));
+ return [...links].map(([url,citations])=>({url,label:`${locale==='es'?'CEC':'CCC'} ${citations.join('; ')}`}));
 }
 export function catechismUrl(lesson:Lesson):string {return catechismReferences(lesson)[0].url}
 // Chapter II supplies the ritual details; the Catechism supplies the teaching.
 const massParagraphs:Record<string,string>={entrance:'47–48',cross:'50',greeting:'50',penitential:'51–52',gloria:'53',collect:'54',first:'57–59',psalm:'61',second:'57–59',acclamation:'62–63',gospel:'59–60',homily:'65–66',creed:'67–68',intercessions:'69–71',gifts:'73–76',offerings:'77',eucharistic:'78–79',sanctus:'79',consecration:'79',memorial:'79',amen:'79', 'our-father':'81',peace:'82',lamb:'83',communion:'84–87',thanksgiving:'88–89',blessing:'90',dismissal:'90'};
-export function massReference(lesson:Lesson):{label:string;url:string} {
- return {label:`Mass instructions · GIRM ${massParagraphs[lesson.id]}`,url:sources.girm.url};
+export function massReference(lesson:Lesson,locale:'en'|'es'='en'):{label:string;url:string} {
+ return {label:locale==='en'?`Mass instructions · GIRM ${massParagraphs[lesson.id]}`:`Instrucciones de la Misa · IGMR ${massParagraphs[lesson.id]}`,url:locale==='en'?sources.girm.url:sources.girm.url.replace('usccb.org/','usccb.org/es/')};
 }
