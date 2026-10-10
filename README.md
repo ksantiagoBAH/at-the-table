@@ -91,8 +91,8 @@ Every lesson’s collapsed notes link to the Vatican page containing each cited 
 
 ## GitHub Pages
 
-Repository: https://github.com/ksantiagoBAH/ocia-adult
+Repository: https://github.com/ksantiagoBAH/at-the-table
 
-Live website: https://ksantiagobah.github.io/ocia-adult/
+Live website: https://ksantiagobah.github.io/at-the-table/
 
 Pushes to `main` and manual runs of `.github/workflows/deploy.yml` install dependencies, verify reference coverage, lint, build, and deploy `dist/` to GitHub Pages. The relative Vite base preserves assets and narration under the repository path. The site is free and public, with no backend or runtime secrets.
