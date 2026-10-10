@@ -17,7 +17,9 @@
     "test:theme": "node scripts/verify-theme.mjs",
     "test:references": "node scripts/verify-references.mjs",
     "generate:share-card": "node scripts/generate-share-card.mjs",
-    "generate:icons": "node scripts/generate-icons.mjs"
+    "generate:icons": "node scripts/generate-icons.mjs",
+    "test:polish": "node scripts/verify-polish.mjs",
+    "test:tagalog": "node scripts/verify-tagalog.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
