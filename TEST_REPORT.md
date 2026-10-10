@@ -89,3 +89,7 @@ Added the Testament to the visible What happens explanations and regenerated the
 ## Shared-link preview graphic
 
 Added a 1200 × 630 PNG using the existing church illustration and At the Table branding, plus static Open Graph title, description, canonical URL, image dimensions, image type, and alt text. Added large-image card metadata. Visually inspected the graphic and verified its PNG dimensions and inclusion in the built output. Build and lint passed. Actual Messages rendering is controlled by the receiving application and was not tested by sending a message.
+
+## Browser tab icon
+
+Added a simple church favicon in the parchment, midnight, and gold palette. Includes a scalable SVG, a 16/32px ICO fallback, and a 180px Apple touch icon. Visually reviewed the rendered icon and verified the production HTML uses the correct relative asset paths. Build and lint passed.

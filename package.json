@@ -15,7 +15,8 @@
     "generate:narration": "node scripts/generate-narration.mjs",
     "test:theme": "node scripts/verify-theme.mjs",
     "test:references": "node scripts/verify-references.mjs",
-    "generate:share-card": "node scripts/generate-share-card.mjs"
+    "generate:share-card": "node scripts/generate-share-card.mjs",
+    "generate:icons": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
