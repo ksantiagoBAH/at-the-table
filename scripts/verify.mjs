@@ -17,7 +17,7 @@ try{
  for(const width of [320,390,768,1440]){await page.setViewportSize({width,height:1000});await check(`welcome ${width}px`)}
  await page.locator('h1').focus();
  await page.screenshot({path:'screenshots/welcome-desktop.png',fullPage:true});
- await page.getByRole('button',{name:'Start learning'}).click();
+ await page.getByRole('button',{name:'Explore the Mass',exact:true}).click();
  await check('Mass map desktop');
  await page.getByRole('button',{name:/1.*We gather.*Introductory Rites/}).click();
  await check('lesson desktop');
@@ -44,7 +44,6 @@ try{
  }
  assert.equal(count,28);
  await page.getByRole('button',{name:'Mass map',exact:true}).click();
- await page.getByText('Looking for a particular moment?',{exact:true}).click();
  await page.getByLabel('Find a lesson').fill('consecration');
  await page.locator('.search-results button').click();
  assert.equal(await page.locator('.lesson h1').textContent(),'Invocation of the Spirit & consecration');

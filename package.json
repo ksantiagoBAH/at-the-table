@@ -19,7 +19,8 @@
     "generate:share-card": "node scripts/generate-share-card.mjs",
     "generate:icons": "node scripts/generate-icons.mjs",
     "test:polish": "node scripts/verify-polish.mjs",
-    "test:tagalog": "node scripts/verify-tagalog.mjs"
+    "test:tagalog": "node scripts/verify-tagalog.mjs",
+    "test:ux": "node scripts/verify-ux.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

@@ -100,3 +100,17 @@ Pushes to `main` and manual runs of `.github/workflows/deploy.yml` install depen
 ## Link previews
 
 The initial HTML includes Open Graph and large-image card metadata with an absolute public PNG URL, so preview fetchers can read it without running React. `public/share-card.png` is a 1200 × 630 branded graphic using the existing church illustration. Regenerate locally with `npm run generate:share-card` (Chrome required), then build and publish. Messaging applications decide whether and when to display a preview.
+
+## Navigation and reading improvements
+
+Each lesson has a shareable URL (`#mass/gloria`); knowledge checks use `#check/gather` (or the corresponding section ID). Refresh and browser Back/Forward restore the selected lesson. The homepage remembers the last visited lesson separately from completion and shows a single Continue reading action in a compact last-lesson card. Existing completion data is retained.
+
+Search is always visible above the Mass map and includes localized prayer text, participation guidance, notes, and familiar prayer names. Accents are optional. Section cards show their own explored counts. Home also links to **Your first Mass** and a **Prayer quick reference**, which reuse the existing guidance and localized prayer texts.
+
+Participation guidance is a plain list. Its explicit entries live in `src/practiceSteps.json`; update the appropriate entries alongside `practice` when editing lesson content. This keeps punctuation inside quoted responses intact. Narration continues to use the original prose, so the current audio manifests remain valid.
+
+Reading text size applies to lesson explanations and prayers and is remembered between lessons. Prayer playback and automatic scrolling are separate controls. The mobile navigation keeps completion beside continuation, while allowing readers to advance without marking a lesson. Explored status distinguishes browser persistence from visit-only storage. Concluding-Rites questions now use daily-life scenarios, followed by a practical section recap.
+
+Run `npm run test:ux` against the local server (or set `TEST_URL`). It covers lesson URLs, history, skip-link focus, resume, text-size persistence, quoted guidance, progress, prayer search, all four languages, quick guides, narrow-screen layouts, WCAG checks, and unavailable browser storage. Existing build, lint, lesson, reading, and audio checks remain available.
+
+The homepage introduces the app as a simple guide to the Catholic Mass, with separate entry points for exploring lessons and attending a first Mass. Original SVG branding uses a cross and shared table; the footer repeats that motif with learning links and creator credits. The lesson audio player uses a neutral label without displaying the narrator’s name or accent.
