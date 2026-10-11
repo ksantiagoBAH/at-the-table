@@ -130,3 +130,61 @@ body.themed-app footer .footer-bottom p{font-size:12px;line-height:1.6;margin:0;
 @keyframes sunrise{from{transform:translate(-25%,340%) scale(.8);opacity:0}35%{opacity:1}to{transform:translate(0,0) scale(1);opacity:1}}
 @keyframes moonrise{from{transform:translate(-25%,340%) scale(.8);opacity:0}35%{opacity:1}to{transform:translate(0,0) scale(1);opacity:1}}
 @media(prefers-reduced-motion:reduce){.church-scene::before,.church-scene::after{transition:none}}
+
+/* A stronger editorial palette gives the light homepage distinct landmarks. */
+body.themed-app[data-reading-theme="light"] header{border-bottom:1px solid #ded8c8}
+[data-reading-theme="light"] .hero h1{color:#243d32}
+body.themed-app[data-reading-theme="light"] .hero .eyebrow{background:#e7eddd;color:#36523d;border:1px solid #ccd6bc}
+[data-reading-theme="light"] .hero .primary{background:var(--read-action);color:var(--read-on-action);box-shadow:0 4px 12px #294c3a20}
+[data-reading-theme="light"] .hero .primary:hover{background:var(--read-action-hover)}
+[data-reading-theme="light"] .resume-card{background:var(--read-action);border:1px solid #294c3a;border-left:4px solid #c3a461;box-shadow:0 8px 24px #294c3a18;color:#fffdf5;padding-top:26px;padding-bottom:26px}
+[data-reading-theme="light"] .resume-card h2{color:#fffdf5}
+[data-reading-theme="light"] .resume-card p{color:#dce4d7}
+[data-reading-theme="light"] .resume-card .eyebrow{color:#e8cb87}
+[data-reading-theme="light"] .resume-card .primary{background:#f5edda;color:#294232}
+[data-reading-theme="light"] .resume-card .primary:hover{background:#fffaf0}
+[data-reading-theme="light"] .home-shortcuts button{background:var(--read-sage);border-color:var(--read-line);box-shadow:none;padding-top:28px;padding-bottom:28px;color:#294232}
+[data-reading-theme="light"] .home-shortcuts button:nth-child(2){background:var(--read-sand);border-color:var(--read-sand-line);color:#59432e}
+[data-reading-theme="light"] .home-shortcuts button small{color:#475645}
+[data-reading-theme="light"] .home-shortcuts button:nth-child(2) small{color:#665441}
+[data-reading-theme="light"] .home-shortcuts button svg{box-sizing:content-box;padding:10px;border-radius:50%;background:#ffffff70}
+[data-reading-theme="light"] .home-shortcuts button:hover{box-shadow:0 6px 20px #343b2b12}
+body.themed-app[data-reading-theme="light"] footer.site-footer{background:var(--read-footer);border-top-color:var(--read-footer-line)}
+[data-reading-theme="light"] .site-footer .footer-flourish{opacity:.8}
+@media(max-width:600px){[data-reading-theme="light"] .home-shortcuts button{padding-top:22px;padding-bottom:22px}}
+body.themed-app[data-reading-theme="light"] footer.site-footer{color:var(--read-footer-ink);--read-muted:var(--read-footer-ink)}
+@media(max-width:600px){.church-scene::before,.church-scene::after,.church-scene .church-sky{left:0;right:0}}
+
+/* Shared surfaces and action colors across maps, guides, prayers and lessons. */
+body.themed-app .map-card{background:var(--read-sage);border-color:var(--read-line)}
+body.themed-app .map-card:nth-child(even){background:var(--read-sand);border-color:var(--read-sand-line)}
+body.themed-app :is(.path-note,.stage-milestone,.section-recap){background:var(--read-soft);border-color:var(--read-line)}
+body.themed-app .audio-player{border:1px solid var(--read-line)}
+body.themed-app :is(.audio-play,.next-lesson):hover{background:var(--read-action-hover);color:var(--read-on-action)}
+body.themed-app[data-reading-theme="light"] .reference-prayers>details[open]{border-color:var(--read-action)}
+body.themed-app[data-reading-theme="light"] .reference-prayers>details[open]>summary{background:var(--read-soft)}
+
+/* Full-size engraved line art, with a separate column to protect the lesson copy. */
+.reading-hero{padding-right:275px}
+.lesson-vignette{position:absolute;top:35px;right:0;display:block;width:260px;height:300px;pointer-events:none;color:var(--read-gold);opacity:.8}
+.lesson-vignette .vignette-frame{opacity:.48}
+.lesson-vignette .vignette-fill{fill:none}
+.lesson-vignette .vignette-gold{stroke:var(--read-gold)}
+.lesson-vignette .vignette-flame{fill:var(--read-wash);fill-opacity:.4}
+@media(min-width:1100px){.reading-hero{padding-right:300px}.lesson-vignette{width:285px;height:330px}}
+@media(max-width:650px){.reading-hero{padding-right:0}.lesson-vignette{position:static;width:210px;height:210px;margin:10px auto 24px;opacity:.8}}
+
+/* Finished frames and delicate engraved details, with breathing room at the edges. */
+.lesson-vignette{overflow:visible}
+.lesson-vignette .vignette-fill{fill:var(--read-wash);fill-opacity:.25}
+.lesson-vignette .vignette-detail{opacity:.7}
+.lesson-vignette .vignette-frame{opacity:.6}
+
+/* Jewel glass, painted details and thick lead lines inspired by parish windows. */
+.lesson-vignette.stained-glass{opacity:1;filter:drop-shadow(0 5px 6px #243d3225)}
+.stained-glass .glass-stone{fill:#c9bfa9;stroke:#8b806b;stroke-width:.6}
+.stained-glass .glass-masonry{stroke:#8b806b;stroke-width:.65;opacity:.75}
+.stained-glass .glass-frame{stroke:#5d5344;stroke-width:1;fill:none}
+.stained-glass .glass-symbol{stroke:#20292d;fill:none}
+[data-reading-theme="dark"] .lesson-vignette.stained-glass{filter:drop-shadow(0 0 12px #64b8d52b) drop-shadow(0 5px 6px #00000040)}
+[data-reading-theme="dark"] .stained-glass .glass-stone{fill:#8f8879;stroke:#5c574d}
