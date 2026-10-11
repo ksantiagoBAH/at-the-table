@@ -83,3 +83,50 @@ body.themed-app footer .footer-bottom p{font-size:12px;line-height:1.6;margin:0;
  .footer-bottom{display:block;padding:20px 24px}body.themed-app footer .footer-bottom p{text-align:left;margin-top:12px;font-size:12px}.footer-links h2{line-height:1.6}.footer-content .footer-links{min-width:0}body.themed-app .site-footer .footer-links :is(a,button){overflow-wrap:anywhere;font-size:13px}
 }
 @media print{.site-footer{display:none!important}}
+
+/* Matched day/evening artwork keeps the church framed consistently across themes. */
+.hero-art .church-hero{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
+@media(max-width:600px){.hero-art .church-hero{max-height:230px}}
+
+/* A feathered sky shares the page background at every edge. */
+.church-scene{position:relative;isolation:isolate}
+.church-scene .church-hero{position:relative;z-index:1}
+.church-sky{position:absolute;inset:-12% -8% 4%;pointer-events:none;background:radial-gradient(ellipse at 52% 38%,#8ec9ed 0%,#abd8f0 30%,#c8e4f180 56%,transparent 74%);mask-image:radial-gradient(ellipse at 50% 44%,#000 25%,#0009 55%,transparent 74%)}
+.church-sky::before{content:"";position:absolute;top:13%;right:19%;width:13%;aspect-ratio:1;border-radius:50%;background:#ffe9a5;box-shadow:0 0 24px 10px #ffecae70}
+.church-sky::after{content:"";position:absolute;inset:0;opacity:0;background:
+ radial-gradient(circle at 24% 27%,#fff5d6 0 1px,transparent 1.8px),
+ radial-gradient(circle at 37% 17%,#fff5d6 0 1.3px,transparent 2px),
+ radial-gradient(circle at 53% 10%,#fff5d6 0 .8px,transparent 1.5px),
+ radial-gradient(circle at 69% 20%,#fff5d6 0 1px,transparent 1.8px),
+ radial-gradient(circle at 81% 31%,#fff5d6 0 1.3px,transparent 2px),
+ radial-gradient(circle at 16% 43%,#fff5d6 0 .8px,transparent 1.5px),
+ radial-gradient(circle at 29% 13%,#fff5d6 0 .7px,transparent 1.4px),
+ radial-gradient(circle at 45% 29%,#fff5d6 0 .7px,transparent 1.4px),
+ radial-gradient(circle at 62% 30%,#fff5d6 0 .9px,transparent 1.6px),
+ radial-gradient(circle at 75% 13%,#fff5d6 0 .7px,transparent 1.4px),
+ radial-gradient(circle at 87% 46%,#fff5d6 0 .8px,transparent 1.5px),
+ radial-gradient(circle at 11% 30%,#fff5d6 0 .6px,transparent 1.3px)}
+[data-reading-theme="dark"] .church-sky{background:radial-gradient(ellipse at 52% 33%,#263c60 0%,#1d2b438c 42%,#16203440 59%,transparent 74%)}
+[data-reading-theme="dark"] .church-sky::before{display:none}
+[data-reading-theme="dark"] .church-sky::after{opacity:.9}
+/* Full moon uses the sun’s diameter and position to keep theme switching steady. */
+[data-reading-theme="dark"] .church-sky::before{display:block;background:radial-gradient(circle at 31% 28%,#7d817b40 0 7%,#d2d2c780 8% 10%,transparent 12%),radial-gradient(circle at 64% 24%,#7b817740 0 5%,#d7d6c780 6% 8%,transparent 10%),radial-gradient(circle at 72% 61%,#878a7c45 0 8%,#d8d8cb80 9% 11%,transparent 13%),radial-gradient(circle at 38% 76%,#82847845 0 4%,#deddd380 5% 7%,transparent 9%),radial-gradient(ellipse at 29% 52%,#858a7950 0 15%,transparent 26%),radial-gradient(ellipse at 57% 39%,#91958140 0 17%,transparent 29%),radial-gradient(ellipse at 51% 67%,#9d9d8740 0 11%,transparent 23%),radial-gradient(circle at 35% 30%,#fff9e6,#e8e4d6 75%);box-shadow:0 0 24px 10px #eee4bd25}
+
+/* Rise from behind the church as the sky changes from day to night. */
+.church-sky{transition:background 900ms ease}
+.church-sky::before{animation:sunrise 1100ms cubic-bezier(.22,1,.36,1) both}
+.church-sky::after{transition:opacity 900ms ease}
+[data-reading-theme="dark"] .church-sky::before{animation-name:moonrise}
+@keyframes sunrise{from{transform:translateY(150%) scale(.8);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+@keyframes moonrise{from{transform:translateY(150%) scale(.8);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.church-sky,.church-sky::after{transition:none}.church-sky::before{animation:none}}
+/* Two sky layers allow a true crossfade between gradients. */
+.church-scene::before,.church-scene::after{content:"";position:absolute;inset:-12% -8% 4%;pointer-events:none;mask-image:radial-gradient(ellipse at 50% 44%,#000 25%,#0009 55%,transparent 74%);transition:opacity 1100ms ease}
+.church-scene::before{background:radial-gradient(ellipse at 52% 38%,#8ec9ed 0%,#abd8f0 30%,#c8e4f180 56%,transparent 74%);opacity:1}
+.church-scene::after{background:radial-gradient(ellipse at 52% 33%,#263c60 0%,#1d2b438c 42%,#16203440 59%,transparent 74%);opacity:0}
+[data-reading-theme="dark"] .church-scene::before{opacity:0}
+[data-reading-theme="dark"] .church-scene::after{opacity:1}
+.church-scene .church-sky{background:none;z-index:1}
+@keyframes sunrise{from{transform:translate(-25%,340%) scale(.8);opacity:0}35%{opacity:1}to{transform:translate(0,0) scale(1);opacity:1}}
+@keyframes moonrise{from{transform:translate(-25%,340%) scale(.8);opacity:0}35%{opacity:1}to{transform:translate(0,0) scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.church-scene::before,.church-scene::after{transition:none}}
