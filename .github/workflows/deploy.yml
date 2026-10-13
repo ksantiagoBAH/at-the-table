@@ -30,7 +30,7 @@ jobs:
       - name: Verify references and lint
         run: npm run test:references && npm run lint
       - name: Build and type-check
-        run: npm run build
+        run: node scripts/build-redirect.mjs
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Upload static site

@@ -1,0 +1,4 @@
+import {mkdirSync,writeFileSync} from 'node:fs';
+const destination = "https://ksantiagobah.github.io/mass-adventure/at-the-table/";
+mkdirSync('dist',{recursive:true});
+writeFileSync('dist/index.html',`<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>At the Table — New location</title><link rel="canonical" href="${destination}"><meta http-equiv="refresh" content="0;url=${destination}"><script>location.replace(${JSON.stringify(destination)}+location.search+location.hash);</script></head><body><h1>At the Table has moved</h1><p><a href="${destination}">Continue to At the Table</a></p><nav><a href="https://ksantiagobah.github.io/mass-adventure/">Mass Adventure</a> · <a href="https://ksantiagobah.github.io/mass-adventure/rosary/">Rosary & Divine Mercy</a></nav></body></html>`);
